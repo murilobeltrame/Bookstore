@@ -4,13 +4,41 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>981fc5f2-d9f8-4184-b22f-fa8b9c70ff2e</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.4" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.3" />
+    <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" Version="6.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Books\" />
+    <None Remove="Books\Commands\" />
+    <None Remove="Books\Queries\" />
+    <None Remove="Shared\" />
+    <None Remove="Shared\Interfaces\" />
+    <None Remove="Shared\Midlewares\" />
+    <None Remove="Shared\Exceptions\" />
+    <None Remove="Shared\Models\" />
+    <None Remove="Shared\Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Books\" />
+    <Folder Include="Books\Commands\" />
+    <Folder Include="Books\Queries\" />
+    <Folder Include="Shared\" />
+    <Folder Include="Shared\Interfaces\" />
+    <Folder Include="Shared\Midlewares\" />
+    <Folder Include="Shared\Exceptions\" />
+    <Folder Include="Shared\Models\" />
+    <Folder Include="Shared\Extensions\" />
+  </ItemGroup>
 </Project>
