@@ -1,0 +1,25 @@
+# tye application configuration file
+# read all about it at https://github.com/dotnet/tye
+#
+# when you've given us a try, we'd love to know what you think:
+#    https://aka.ms/AA7q20u
+#
+name: bookstore
+services:
+- name: bookstore-api
+  project: Bookstore.Api/Bookstore.Api.csproj
+- name: bookstore-datatools
+  project: Bookstore.DataTools/Bookstore.DataTools.csproj
+- name: bookstore-db
+  image: postgres:11.19-alpine
+  env:
+    - name: POSTGRES_USER
+      value: bookstore-dbuser
+    - name: POSTGRES_PASSWORD
+      value: password
+    - name: POSTGRES_DB
+      value: bookstore-db
+  bindings:
+    - port: 54321
+      containerPort: 5432
+      connectionString: Server=${host};Port=${port};Database=${env:POSTGRES_DB};User Id=${env:POSTGRES_USER};Password=${env:POSTGRES_PASSWORD};
