@@ -406,3 +406,6 @@ ASALocalRun/
 
 # SQLLite files
 **/*.db
+
+# Tye temp
+**/.tye
