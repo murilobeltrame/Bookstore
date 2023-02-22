@@ -28,7 +28,7 @@ namespace Bookstore.Api.Shared
 
         public async Task<T> Get(int id, CancellationToken cancellationToken = default)
         {
-            var entity = await _context.Set<T>().FirstOrDefaultAsync(w => w.Id == id, cancellationToken);
+            var entity = await _context.Set<T>().AsNoTracking().FirstOrDefaultAsync(w => w.Id == id, cancellationToken);
             if (entity == null) throw new NotFoundException();
             return entity;
         }
@@ -37,12 +37,12 @@ namespace Bookstore.Api.Shared
         {
             var query = _context.Set<T>().AsQueryable();
             query = SpecificationEvaluator.Default.GetQuery(query, specification);
-            return await query.ToListAsync(cancellationToken);
+            return await query.AsNoTracking().ToListAsync(cancellationToken);
         }
 
         public async Task Update(T entity, CancellationToken cancellationToken = default)
         {
-            _context.Update(entity);
+            _context.Set<T>().Update(entity);
             await _context.SaveChangesAsync(cancellationToken);
         }
     }

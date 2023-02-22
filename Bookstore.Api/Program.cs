@@ -30,7 +30,10 @@ scope.ServiceProvider.GetRequiredService<DbInitializer>().Run();
 
 // Configure the HTTP request pipeline.
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(o => {
+    o.RoutePrefix = string.Empty;
+    o.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+});
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
