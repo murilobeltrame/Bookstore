@@ -21,8 +21,12 @@ builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBeh
 builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();
+builder.Services.AddTransient<DbInitializer>();
 
 var app = builder.Build();
+
+using var scope = app.Services.CreateScope();
+scope.ServiceProvider.GetRequiredService<DbInitializer>().Run();
 
 // Configure the HTTP request pipeline.
 app.UseSwagger();

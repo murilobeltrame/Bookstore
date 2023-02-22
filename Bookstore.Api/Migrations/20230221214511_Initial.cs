@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Bookstore.DataTools.Migrations
+namespace Bookstore.Api.Migrations
 {
     /// <inheritdoc />
-    public partial class InitalMigration : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -14,10 +15,10 @@ namespace Bookstore.DataTools.Migrations
                 name: "Books",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Title = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    AuthorName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Title = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    AuthorName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
