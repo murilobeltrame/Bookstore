@@ -34,10 +34,7 @@ namespace Bookstore.Api.Books
 
         public async Task<Unit> Handle(UpdateBookCommand request, CancellationToken cancellationToken)
         {
-            var entity = (await _repository
-                .Get(request.Id, cancellationToken))
-                .Update(request.Title, request.AuthorName);
-            await _repository.Update(entity, cancellationToken);
+            await _repository.Update(request.Id, request.ToEntity(), cancellationToken);
             return new Unit();
         }
 

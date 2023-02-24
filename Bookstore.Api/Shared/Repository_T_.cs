@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bookstore.Api.Shared
 {
-    public class Repository<T>: IRepository<T> where T : class, IEntity
+    public class Repository<T> : IRepository<T> where T : class, Interfaces.IEntity<T>
     {
         private readonly ApplicationContext _context;
 
@@ -40,9 +40,12 @@ namespace Bookstore.Api.Shared
             return await query.AsNoTracking().ToListAsync(cancellationToken);
         }
 
-        public async Task Update(T entity, CancellationToken cancellationToken = default)
+        public async Task Update(int id, T entity, CancellationToken cancellationToken = default)
         {
-            _context.Set<T>().Update(entity);
+            var toUpdateEntity = entity;
+            if (toUpdateEntity.Id < 1)
+                toUpdateEntity = (await Get(id, cancellationToken)).Update(entity);
+            _context.Set<T>().Update(toUpdateEntity);
             await _context.SaveChangesAsync(cancellationToken);
         }
     }

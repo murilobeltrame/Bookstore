@@ -2,11 +2,11 @@
 
 namespace Bookstore.Api.Shared.Interfaces
 {
-	public interface IRepository<T> where T: class, IEntity
+	public interface IRepository<T> where T: class, IEntity<T>
 	{
 		public Task<T> Create(T entity, CancellationToken cancellationToken = default);
 
-		public Task Update(T entity, CancellationToken cancellationToken = default);
+		public Task Update(int id, T entity, CancellationToken cancellationToken = default);
 
 		public Task Delete(int id, CancellationToken cancellationToken = default);
 

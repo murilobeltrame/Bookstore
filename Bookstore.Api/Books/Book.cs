@@ -2,7 +2,7 @@
 
 namespace Bookstore.Api.Books
 {
-    public sealed class Book : IEntity
+    public sealed class Book : IEntity<Book>
     {
         public Book(string title, string authorName)
             => (Title, AuthorName) = (title, authorName);
@@ -15,10 +15,10 @@ namespace Bookstore.Api.Books
         public string Title { get; private set; }
         public string AuthorName { get; private set; }
 
-        public Book Update(string title, string authorName)
+        public Book Update(Book book)
         {
-            this.Title = title;
-            this.AuthorName = authorName;
+            this.Title = book.Title;
+            this.AuthorName = book.AuthorName;
             return this;
         }
     }
