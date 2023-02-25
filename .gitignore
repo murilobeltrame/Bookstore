@@ -409,3 +409,9 @@ ASALocalRun/
 
 # Tye temp
 **/.tye
+
+# Report Generator output
+coveragereport
+
+# Styker output
+StrykerOutput

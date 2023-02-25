@@ -1,0 +1,1 @@
+dotnet stryker -s Bookstore.sln -o
