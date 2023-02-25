@@ -5,6 +5,12 @@ VisualStudioVersion = 25.0.1705.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookstore.Api", "Bookstore.Api\Bookstore.Api.csproj", "{361AE0E0-97BD-41C8-B2F1-3EA93FF2FE0A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookstore.Tests.Unit", "Bookstore.Tests.Unit\Bookstore.Tests.Unit.csproj", "{E0DB8036-4124-4FB8-9F04-48DE592165BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookstore.Tests.Integration", "Bookstore.Tests.Integration\Bookstore.Tests.Integration.csproj", "{4A5D1239-637C-42A8-A14B-2A1BA12A2CCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookstore.Tests.Api", "Bookstore.Tests.Api\Bookstore.Tests.Api.csproj", "{EACE6E94-8F76-49D8-BE85-1A76327C1C90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{361AE0E0-97BD-41C8-B2F1-3EA93FF2FE0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{361AE0E0-97BD-41C8-B2F1-3EA93FF2FE0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{361AE0E0-97BD-41C8-B2F1-3EA93FF2FE0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0DB8036-4124-4FB8-9F04-48DE592165BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0DB8036-4124-4FB8-9F04-48DE592165BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0DB8036-4124-4FB8-9F04-48DE592165BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0DB8036-4124-4FB8-9F04-48DE592165BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A5D1239-637C-42A8-A14B-2A1BA12A2CCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A5D1239-637C-42A8-A14B-2A1BA12A2CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A5D1239-637C-42A8-A14B-2A1BA12A2CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A5D1239-637C-42A8-A14B-2A1BA12A2CCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EACE6E94-8F76-49D8-BE85-1A76327C1C90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EACE6E94-8F76-49D8-BE85-1A76327C1C90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EACE6E94-8F76-49D8-BE85-1A76327C1C90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EACE6E94-8F76-49D8-BE85-1A76327C1C90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

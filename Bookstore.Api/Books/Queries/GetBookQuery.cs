@@ -2,5 +2,5 @@
 
 namespace Bookstore.Api.Books.Queries
 {
-    public sealed record GetBookQuery(int id) : IQuery<Book> { }
+    public sealed record GetBookQuery(int Id) : IQuery<Book> { }
 }

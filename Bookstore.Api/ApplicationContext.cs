@@ -5,6 +5,8 @@ namespace Bookstore.Api
 {
     public class ApplicationContext : DbContext
     {
+        public ApplicationContext() { }
+
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options) { }
 
@@ -21,6 +23,6 @@ namespace Bookstore.Api
                 .IsRequired();
         }
 
-        public DbSet<Book> Books { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
     }
 }

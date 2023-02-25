@@ -24,7 +24,7 @@ namespace Bookstore.Api.Books
 
         public async Task<Book> Handle(GetBookQuery request, CancellationToken cancellationToken)
         {
-            return await _repository.Get(request.id, cancellationToken);
+            return await _repository.Get(request.Id, cancellationToken);
         }
 
         public async Task<IEnumerable<Book>> Handle(FetchBookQuery request, CancellationToken cancellationToken)

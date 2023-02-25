@@ -17,8 +17,8 @@ namespace Bookstore.Api.Books
 
         public Book Update(Book book)
         {
-            this.Title = book.Title;
-            this.AuthorName = book.AuthorName;
+            Title = book.Title;
+            AuthorName = book.AuthorName;
             return this;
         }
     }
