@@ -40,3 +40,6 @@ app.MapControllers();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.Run();
+
+// REQUIRED FOR TESTS
+public partial class Program { }

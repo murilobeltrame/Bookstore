@@ -7,7 +7,7 @@ namespace Bookstore.Api.Books
 {
     public class BooksHandler:
         IQueryHandler<GetBookQuery, Book>,
-        IQueryHandler<FetchBookQuery, IEnumerable<Book>>,
+        IQueryHandler<FetchBookQuery, IEnumerable<FetchBookQueryResponse>>,
         ICommandHandler<CreateBookCommand, CreateBookCommandResponse>,
         ICommandHandler<UpdateBookCommand>,
         ICommandHandler<DeleteBookCommand>
@@ -27,7 +27,7 @@ namespace Bookstore.Api.Books
             return await _repository.Get(request.Id, cancellationToken);
         }
 
-        public async Task<IEnumerable<Book>> Handle(FetchBookQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<FetchBookQueryResponse>> Handle(FetchBookQuery request, CancellationToken cancellationToken)
         {
             return await _repository.Query(request.ToSpecification(), cancellationToken);
         }

@@ -6,7 +6,7 @@ namespace Bookstore.Tests.Unit.Books
     public class BookTests
 	{
 		[Fact]
-		public void Book_ShouldBeInstantiated()
+		public void ShouldBeInstantiated()
 		{
 			var title = "a";
 			var author = "b";

@@ -35,9 +35,16 @@ namespace Bookstore.Api.Shared
 
         public async Task<IEnumerable<T>> Query(ISpecification<T> specification, CancellationToken cancellationToken = default)
         {
-            var query = _context.Set<T>().AsQueryable();
+            var query = _context.Set<T>().AsNoTracking();
             query = SpecificationEvaluator.Default.GetQuery(query, specification);
-            return await query.AsNoTracking().ToListAsync(cancellationToken);
+            return await query.ToListAsync(cancellationToken);
+        }
+
+        public async Task<IEnumerable<TResult>> Query<TResult>(ISpecification<T, TResult> specification, CancellationToken cancellationToken = default)
+        {
+            var query = _context.Set<T>().AsNoTracking();
+            var projectedQuery = SpecificationEvaluator.Default.GetQuery(query, specification);
+            return await projectedQuery.ToListAsync(cancellationToken);
         }
 
         public async Task Update(int id, T entity, CancellationToken cancellationToken = default)

@@ -13,5 +13,7 @@ namespace Bookstore.Api.Shared.Interfaces
 		public Task<T> Get(int id, CancellationToken cancellationToken = default);
 
 		public Task<IEnumerable<T>> Query(ISpecification<T> specification, CancellationToken cancellationToken = default);
-	}
+
+        public Task<IEnumerable<TResult>> Query<TResult>(ISpecification<T, TResult> specification, CancellationToken cancellationToken = default);
+    }
 }
