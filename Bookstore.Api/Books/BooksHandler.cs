@@ -1,6 +1,8 @@
 ﻿using Bookstore.Api.Books.Commands;
+using Bookstore.Api.Books.Events;
 using Bookstore.Api.Books.Queries;
 using Bookstore.Api.Shared.Interfaces;
+using MassTransit;
 using MediatR;
 
 namespace Bookstore.Api.Books
@@ -12,13 +14,21 @@ namespace Bookstore.Api.Books
         ICommandHandler<UpdateBookCommand>,
         ICommandHandler<DeleteBookCommand>
 	{
+        private readonly IPublishEndpoint _publisher;
         private readonly IRepository<Book> _repository;
 
-        public BooksHandler(IRepository<Book> repository) => _repository = repository;
+        public BooksHandler(
+            IPublishEndpoint publisher,
+            IRepository<Book> repository)
+        {
+            _publisher = publisher;
+            _repository = repository;
+        }
 
         public async Task<CreateBookCommandResponse> Handle(CreateBookCommand request, CancellationToken cancellationToken)
         {
             var createdBook = await _repository.Create(request.ToEntity(), cancellationToken);
+            await _publisher.Publish(CreatedBookEvent.FromEntity(createdBook), cancellationToken);
             return CreateBookCommandResponse.FromEntity(createdBook);
         }
 

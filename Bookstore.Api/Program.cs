@@ -4,6 +4,7 @@ using Bookstore.Api.Shared;
 using Bookstore.Api.Shared.Interfaces;
 using Bookstore.Api.Shared.Midlewares;
 using FluentValidation;
+using MassTransit;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,11 @@ var configuration = builder.Configuration;
 
 // Add services to the container.
 builder.Services.AddDbContext<ApplicationContext>(o => o.UseNpgsql(configuration.GetConnectionString("bookstore-db")));
+builder.Services.AddMassTransit(o => o.UsingRabbitMq((context, config) =>
+{
+    config.Host(configuration.GetConnectionString("bookstore-broker", "protocol"));
+}));
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
