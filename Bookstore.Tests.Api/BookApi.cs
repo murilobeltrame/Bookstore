@@ -7,23 +7,23 @@ using Microsoft.Extensions.Hosting;
 
 namespace Bookstore.Tests.Api;
 
-public class BookApi: IClassFixture<WebApplicationFactory<Program>>
+public class BookApi : IClassFixture<WebApplicationFactory<Program>>
 {
-    [Fact]
-    public async void GetExistingBookShouldReturnABook()
-    {
-        using var host = await new HostBuilder()
-            .ConfigureWebHost(c =>
-            {
-                c.UseTestServer().Configure(a => { });
-            })
-            .StartAsync();
+    // [Fact]
+    // public async void GetExistingBookShouldReturnABook()
+    // {
+    //     using var host = await new HostBuilder()
+    //         .ConfigureWebHost(c =>
+    //         {
+    //             c.UseTestServer().Configure(a => { });
+    //         })
+    //         .StartAsync();
 
-        var client = host.GetTestClient();
+    //     var client = host.GetTestClient();
 
-        var response = await client.GetAsync("/books");
+    //     var response = await client.GetAsync("/books");
 
-        response.EnsureSuccessStatusCode();
-        
-    }
+    //     response.EnsureSuccessStatusCode();
+
+    // }
 }

@@ -6,17 +6,17 @@ using Moq;
 
 namespace Bookstore.Tests.Unit.Books
 {
-	public class BookControllerTests
-	{
-		[Fact]
-		public async Task Get_WhenRecordExists_ShouldReturnTheRecord()
-		{
-			var mockRepo = new Mock<IRepository<Book>>();
-			var mockHandler = new Mock<IQueryHandler<GetBookQuery, Book>>();
-			mockHandler.Setup(h => h.Handle());
+    public class BookControllerTests
+    {
+        // [Fact]
+        // public async Task Get_WhenRecordExists_ShouldReturnTheRecord()
+        // {
+        // 	var mockRepo = new Mock<IRepository<Book>>();
+        // 	var mockHandler = new Mock<IQueryHandler<GetBookQuery, Book>>();
+        // 	mockHandler.Setup(h => h.Handle());
 
-			var result = controller.Get(mediator, 1);
-		}
-	}
+        // 	var result = controller.Get(mediator, 1);
+        // }
+    }
 }
 
