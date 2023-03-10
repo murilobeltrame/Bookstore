@@ -8,7 +8,6 @@ name: bookstore
 services:
 - name: bookstore-api
   project: Bookstore.Api/Bookstore.Api.csproj
-  replicas: 2
 - name: bookstore-db
   image: postgres:11.19-alpine
   env:
@@ -19,7 +18,7 @@ services:
     - name: POSTGRES_DB
       value: bookstore-db
   bindings:
-    - port: 54321
+    - port: 5432
       containerPort: 5432
       connectionString: Server=${host};Port=${port};Database=${env:POSTGRES_DB};User Id=${env:POSTGRES_USER};Password=${env:POSTGRES_PASSWORD};
 - name: bookstore-broker
@@ -27,9 +26,9 @@ services:
   bindings:
     - name: management
       protocol: http
-      port: 25672
+      port: 15672
       containerPort: 15672
     - name: protocol
-      port: 56721
+      port: 5672
       containerPort: 5672
       connectionString: ${host}
