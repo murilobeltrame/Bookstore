@@ -38,6 +38,8 @@
     <None Remove="Shared\Extensions\" />
     <None Remove="Books\Events\" />
     <None Remove="Authors\" />
+    <None Remove="Authors\Commands\" />
+    <None Remove="Authors\Queries\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Books\" />
@@ -51,5 +53,7 @@
     <Folder Include="Shared\Extensions\" />
     <Folder Include="Books\Events\" />
     <Folder Include="Authors\" />
+    <Folder Include="Authors\Commands\" />
+    <Folder Include="Authors\Queries\" />
   </ItemGroup>
 </Project>

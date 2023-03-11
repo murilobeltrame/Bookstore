@@ -1,4 +1,5 @@
-﻿using Bookstore.Api.Shared.Interfaces;
+﻿using Bookstore.Api.Authors;
+using Bookstore.Api.Shared.Interfaces;
 
 namespace Bookstore.Api.Books
 {
@@ -23,12 +24,5 @@ namespace Bookstore.Api.Books
             Authors = book.Authors;
             return this;
         }
-    }
-
-    public sealed class Author
-    {
-        public int Id { get; private set; }
-        public string Name { get; private set; }
-        public Author(string name) => Name = name;
     }
 }

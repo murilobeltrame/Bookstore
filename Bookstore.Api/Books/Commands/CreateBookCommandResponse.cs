@@ -1,4 +1,6 @@
-﻿namespace Bookstore.Api.Books.Commands
+﻿using Bookstore.Api.Authors;
+
+namespace Bookstore.Api.Books.Commands
 {
     public class CreateBookCommandResponse
     {

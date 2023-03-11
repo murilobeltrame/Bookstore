@@ -1,4 +1,6 @@
 ﻿using System;
+using Bookstore.Api.Authors;
+
 namespace Bookstore.Api.Books.Queries
 {
     public class FetchBookQueryResponse

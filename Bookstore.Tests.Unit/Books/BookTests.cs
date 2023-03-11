@@ -1,4 +1,5 @@
-﻿using Bookstore.Api.Books;
+﻿using Bookstore.Api.Authors;
+using Bookstore.Api.Books;
 using FluentAssertions;
 
 namespace Bookstore.Tests.Unit.Books

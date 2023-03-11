@@ -1,4 +1,5 @@
 ﻿using Bookstore.Api;
+using Bookstore.Api.Authors;
 using Bookstore.Api.Books;
 using Bookstore.Api.Shared;
 using FluentAssertions;

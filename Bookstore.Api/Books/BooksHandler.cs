@@ -45,13 +45,13 @@ namespace Bookstore.Api.Books
         public async Task<Unit> Handle(UpdateBookCommand request, CancellationToken cancellationToken)
         {
             await _repository.Update(request.Id, request.ToEntity(), cancellationToken);
-            return new Unit();
+            return new();
         }
 
         public async Task<Unit> Handle(DeleteBookCommand request, CancellationToken cancellationToken)
         {
             await _repository.Delete(request.Id, cancellationToken);
-            return new Unit();
+            return new();
         }
     }
 }
