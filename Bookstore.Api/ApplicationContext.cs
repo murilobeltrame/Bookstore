@@ -12,17 +12,24 @@ namespace Bookstore.Api
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var bookModel = modelBuilder.Entity<Book>();
+            var authorModel = modelBuilder.Entity<Author>();
+            authorModel.HasKey(x => x.Id);
+            authorModel.Property(x => x.Name)
+                .HasMaxLength(100)
+                .IsRequired();
 
+            var bookModel = modelBuilder.Entity<Book>();
             bookModel.HasKey(x => x.Id);
             bookModel.Property(x => x.Title)
                 .HasMaxLength(100)
                 .IsRequired();
-            bookModel.Property(x => x.AuthorName)
+            bookModel.Property(x => x.Publisher)
                 .HasMaxLength(100)
                 .IsRequired();
         }
 
         public virtual DbSet<Book> Books { get; set; }
+
+        public virtual DbSet<Author> Authors { get; set; }
     }
 }

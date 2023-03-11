@@ -37,6 +37,7 @@
     <None Remove="Shared\Models\" />
     <None Remove="Shared\Extensions\" />
     <None Remove="Books\Events\" />
+    <None Remove="Authors\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Books\" />
@@ -49,5 +50,6 @@
     <Folder Include="Shared\Models\" />
     <Folder Include="Shared\Extensions\" />
     <Folder Include="Books\Events\" />
+    <Folder Include="Authors\" />
   </ItemGroup>
 </Project>

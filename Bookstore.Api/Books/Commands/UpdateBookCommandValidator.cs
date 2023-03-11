@@ -6,7 +6,7 @@ namespace Bookstore.Api.Books.Commands
 	{
 		public UpdateBookCommandValidator()
 		{
-			RuleFor(x => x.AuthorName)
+			RuleFor(x => x.Publisher)
 				.NotEmpty()
 				.MaximumLength(50);
 

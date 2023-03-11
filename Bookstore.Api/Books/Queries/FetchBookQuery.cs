@@ -20,7 +20,13 @@ namespace Bookstore.Api.Books.Queries
                 Query.Search(s => s.Title, title.Replace("*", "%"));
 
             if (!string.IsNullOrWhiteSpace(author))
-                Query.Search(s => s.AuthorName, author.Replace("*", "%"));
+            {
+                var cleanAuthor = author.Replace("*", string.Empty);
+                if (author.StartsWith("*") && author.EndsWith("*")) Query.Where(s => s.Authors.Any(w => w.Name.Contains(cleanAuthor, StringComparison.InvariantCultureIgnoreCase)));
+                else if (author.StartsWith("*")) Query.Where(s => s.Authors.Any(w => w.Name.EndsWith(cleanAuthor, StringComparison.InvariantCultureIgnoreCase)));
+                else if (author.EndsWith("*")) Query.Where(s => s.Authors.Any(w => w.Name.StartsWith(cleanAuthor, StringComparison.InvariantCultureIgnoreCase)));
+                else Query.Where(s => s.Authors.Any(w => w.Name.Equals(cleanAuthor, StringComparison.InvariantCultureIgnoreCase)));
+            }
 
             Query
                 .Skip(skip.GetValueOrDefault(0))

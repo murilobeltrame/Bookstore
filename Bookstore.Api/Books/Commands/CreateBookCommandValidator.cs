@@ -6,13 +6,13 @@ namespace Bookstore.Api.Books.Commands
     {
         public CreateBookCommandValidator()
         {
-            RuleFor(x => x.AuthorName)
-                .NotEmpty()
-                .MaximumLength(50);
-
             RuleFor(x => x.Title)
                 .NotEmpty()
                 .MaximumLength(100);
+
+            RuleFor(x => x.Publisher)
+                .NotEmpty()
+                .MaximumLength(50);
         }
     }
 }
