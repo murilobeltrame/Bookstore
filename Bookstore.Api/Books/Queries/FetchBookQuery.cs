@@ -16,6 +16,8 @@ namespace Bookstore.Api.Books.Queries
     {
         public FetchAllBooksPaginatedSpecification(int? skip, int? take, string? title, string? author)
         {
+            Query.Include(i => i.Authors);
+
             if (!string.IsNullOrWhiteSpace(title))
                 Query.Search(s => s.Title, title.Replace("*", "%"));
 

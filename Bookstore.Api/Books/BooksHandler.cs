@@ -8,7 +8,7 @@ using MediatR;
 namespace Bookstore.Api.Books
 {
     public class BooksHandler:
-        IQueryHandler<GetBookQuery, Book>,
+        IQueryHandler<GetBookQuery, GetBookQueryResponse>,
         IQueryHandler<FetchBookQuery, IEnumerable<FetchBookQueryResponse>>,
         ICommandHandler<CreateBookCommand, CreateBookCommandResponse>,
         ICommandHandler<UpdateBookCommand>,
@@ -32,9 +32,9 @@ namespace Bookstore.Api.Books
             return CreateBookCommandResponse.FromEntity(createdBook);
         }
 
-        public async Task<Book> Handle(GetBookQuery request, CancellationToken cancellationToken)
+        public async Task<GetBookQueryResponse> Handle(GetBookQuery request, CancellationToken cancellationToken)
         {
-            return await _repository.Get(request.Id, cancellationToken);
+            return await _repository.Get(request.ToSpecification(), cancellationToken);
         }
 
         public async Task<IEnumerable<FetchBookQueryResponse>> Handle(FetchBookQuery request, CancellationToken cancellationToken)

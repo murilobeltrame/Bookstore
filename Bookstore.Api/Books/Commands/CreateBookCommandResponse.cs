@@ -7,7 +7,7 @@ namespace Bookstore.Api.Books.Commands
         public int Id { get; set; }
         public string Title { get; set; } = string.Empty;
         public string Publisher { get; set; } = string.Empty;
-        public IEnumerable<Author>? Authors { get; set; }
+        public IEnumerable<string>? AuthorNames { get; set; }
 
         public static CreateBookCommandResponse FromEntity(Book entity)
             => new()
@@ -15,7 +15,7 @@ namespace Bookstore.Api.Books.Commands
                 Id = entity.Id,
                 Title = entity.Title,
                 Publisher = entity.Publisher,
-                Authors = entity.Authors
+                AuthorNames = entity.Authors.Select(s => s.Name)
             };
     }
 }

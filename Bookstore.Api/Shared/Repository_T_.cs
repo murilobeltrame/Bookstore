@@ -33,6 +33,24 @@ namespace Bookstore.Api.Shared
             return entity;
         }
 
+        public async Task<T> Get(ISpecification<T> specification, CancellationToken cancellationToken = default)
+        {
+            var query = _context.Set<T>().AsNoTracking();
+            query = SpecificationEvaluator.Default.GetQuery(query, specification);
+            var entity = await query.FirstOrDefaultAsync(cancellationToken);
+            if (entity == null) throw new NotFoundException();
+            return entity;
+        }
+
+        public async Task<TResult> Get<TResult>(ISpecification<T, TResult> specification, CancellationToken cancellationToken = default)
+        {
+            var query = _context.Set<T>().AsNoTracking();
+            var projectedQuery = SpecificationEvaluator.Default.GetQuery(query, specification);
+            var entity = await projectedQuery.FirstOrDefaultAsync(cancellationToken);
+            if (entity == null) throw new NotFoundException();
+            return entity;
+        }
+
         public async Task<IEnumerable<T>> Query(ISpecification<T> specification, CancellationToken cancellationToken = default)
         {
             var query = _context.Set<T>().AsNoTracking();
