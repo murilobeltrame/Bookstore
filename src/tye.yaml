@@ -7,7 +7,7 @@
 name: bookstore
 services:
 - name: bookstore-api
-  project: Bookstore.Api/Bookstore.Api.csproj
+  project: Books/Bookstore.Api/Bookstore.Api.csproj
 - name: bookstore-db
   image: postgres:11.19-alpine
   env:
