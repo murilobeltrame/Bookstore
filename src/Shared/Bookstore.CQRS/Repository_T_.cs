@@ -1,16 +1,16 @@
 ﻿using Ardalis.Specification;
 using Ardalis.Specification.EntityFrameworkCore;
-using Bookstore.Api.Shared.Exceptions;
-using Bookstore.Api.Shared.Interfaces;
+using Bookstore.Common.Exceptions;
+using Bookstore.CQRS.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Bookstore.Api.Shared
+namespace Bookstore.CQRS
 {
     public class Repository<T> : IRepository<T> where T : class, Interfaces.IEntity<T>
     {
-        private readonly ApplicationContext _context;
+        private readonly DbContext _context;
 
-        public Repository(ApplicationContext context) => _context = context;
+        public Repository(DbContext context) => _context = context;
 
         public async Task<T> Create(T entity, CancellationToken cancellationToken = default)
         {

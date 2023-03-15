@@ -1,6 +1,6 @@
 ﻿using Ardalis.Specification;
 
-namespace Bookstore.Api.Shared.Interfaces
+namespace Bookstore.CQRS.Interfaces
 {
 	public interface IRepository<T> where T: class, IEntity<T>
 	{

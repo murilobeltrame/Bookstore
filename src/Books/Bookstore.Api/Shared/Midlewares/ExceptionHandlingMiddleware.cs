@@ -1,5 +1,5 @@
-﻿using Bookstore.Api.Shared.Exceptions;
-using Bookstore.Api.Shared.Models;
+﻿using Bookstore.Api.Shared.Models;
+using Bookstore.Common.Exceptions;
 using FluentValidation;
 
 namespace Bookstore.Api.Shared.Midlewares

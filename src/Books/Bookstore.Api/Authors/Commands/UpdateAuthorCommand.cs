@@ -1,5 +1,4 @@
-﻿using System;
-using Bookstore.Api.Shared.Interfaces;
+﻿using Bookstore.CQRS.Interfaces;
 
 namespace Bookstore.Api.Authors.Commands
 {

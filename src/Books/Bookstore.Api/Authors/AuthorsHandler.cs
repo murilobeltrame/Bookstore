@@ -1,6 +1,6 @@
 ﻿using Bookstore.Api.Authors.Commands;
 using Bookstore.Api.Authors.Queries;
-using Bookstore.Api.Shared.Interfaces;
+using Bookstore.CQRS.Interfaces;
 using MediatR;
 
 namespace Bookstore.Api.Authors
@@ -45,4 +45,3 @@ namespace Bookstore.Api.Authors
         }
     }
 }
-

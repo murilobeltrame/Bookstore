@@ -1,5 +1,4 @@
-﻿using System;
-using Bookstore.Api.Authors;
+﻿using Bookstore.Api.Authors;
 
 namespace Bookstore.Api.Books.Events
 {

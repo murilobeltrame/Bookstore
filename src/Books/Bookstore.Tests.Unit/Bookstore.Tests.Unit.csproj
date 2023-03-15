@@ -21,7 +21,7 @@
     </PackageReference>
     <PackageReference Include="FluentAssertions" Version="6.10.0" />
     <PackageReference Include="Moq" Version="4.18.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,8 +31,5 @@
   <ItemGroup>
     <Folder Include="Books\" />
     <Folder Include="Shared\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Bookstore.Api\Bookstore.Api.csproj" />
   </ItemGroup>
 </Project>

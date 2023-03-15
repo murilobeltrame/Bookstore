@@ -1,8 +1,8 @@
-﻿using Bookstore.Api.Shared.Interfaces;
+﻿using Bookstore.CQRS.Interfaces;
 using FluentValidation;
 using MediatR;
 
-namespace Bookstore.Api.Shared
+namespace Bookstore.CQRS
 {
     public sealed class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : class, ICommand<TResponse>

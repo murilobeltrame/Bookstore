@@ -1,7 +1,6 @@
 ﻿using System;
 using Bookstore.Api.Books;
 using Bookstore.Api.Books.Queries;
-using Bookstore.Api.Shared.Interfaces;
 using Moq;
 
 namespace Bookstore.Tests.Unit.Books

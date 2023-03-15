@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Bookstore.Api.Shared.Interfaces
+namespace Bookstore.CQRS.Interfaces
 {
     public interface ICommandHandler<in TCommand, TResponse> : IRequestHandler<TCommand, TResponse>
         where TCommand : ICommand<TResponse>

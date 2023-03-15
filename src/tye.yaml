@@ -6,9 +6,9 @@
 #
 name: bookstore
 services:
-- name: bookstore-api
+- name: books-api
   project: Books/Bookstore.Api/Bookstore.Api.csproj
-- name: bookstore-db
+- name: books-db
   image: postgres:11.19-alpine
   env:
     - name: POSTGRES_USER
@@ -18,7 +18,7 @@ services:
     - name: POSTGRES_DB
       value: bookstore-db
   bindings:
-    - port: 5432
+    - port: 54320
       containerPort: 5432
       connectionString: Server=${host};Port=${port};Database=${env:POSTGRES_DB};User Id=${env:POSTGRES_USER};Password=${env:POSTGRES_PASSWORD};
 - name: bookstore-broker
@@ -32,3 +32,18 @@ services:
       port: 5672
       containerPort: 5672
       connectionString: ${host}
+- name: publishers-api
+  project: Publishers/Publisher.Api/Publisher.Api.csproj
+- name: publishers-db
+  image: postgres:11.19-alpine
+  env:
+    - name: POSTGRES_USER
+      value: publishers-dbuser
+    - name: POSTGRES_PASSWORD
+      value: password
+    - name: POSTGRES_DB
+      value: publishers-db
+  bindings:
+    - port: 54321
+      containerPort: 5432
+      connectionString: Server=${host};Port=${port};Database=${env:POSTGRES_DB};User Id=${env:POSTGRES_USER};Password=${env:POSTGRES_PASSWORD};

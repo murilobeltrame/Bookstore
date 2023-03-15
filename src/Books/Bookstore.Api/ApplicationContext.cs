@@ -27,6 +27,8 @@ namespace Bookstore.Api
             bookModel.Property(x => x.Publisher)
                 .HasMaxLength(100)
                 .IsRequired();
+
+            base.OnModelCreating(modelBuilder);
         }
 
         public virtual DbSet<Book> Books { get; set; }

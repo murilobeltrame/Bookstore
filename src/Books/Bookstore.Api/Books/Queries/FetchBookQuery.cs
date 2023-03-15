@@ -1,7 +1,6 @@
 ﻿using System.Linq.Expressions;
 using Ardalis.Specification;
-using Bookstore.Api.Shared.Interfaces;
-using Microsoft.AspNetCore.Mvc;
+using Bookstore.CQRS.Interfaces;
 
 namespace Bookstore.Api.Books.Queries
 {

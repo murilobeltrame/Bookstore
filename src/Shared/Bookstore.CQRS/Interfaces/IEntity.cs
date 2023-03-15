@@ -1,4 +1,4 @@
-﻿namespace Bookstore.Api.Shared.Interfaces
+﻿namespace Bookstore.CQRS.Interfaces
 {
     public interface IEntity<T>
     {

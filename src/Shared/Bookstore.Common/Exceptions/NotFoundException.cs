@@ -1,4 +1,4 @@
-﻿namespace Bookstore.Api.Shared.Exceptions
+﻿namespace Bookstore.Common.Exceptions
 {
     public class NotFoundException: Exception
 	{

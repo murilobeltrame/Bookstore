@@ -1,7 +1,7 @@
 ﻿using Bookstore.Api.Books.Commands;
 using Bookstore.Api.Books.Events;
 using Bookstore.Api.Books.Queries;
-using Bookstore.Api.Shared.Interfaces;
+using Bookstore.CQRS.Interfaces;
 using MassTransit;
 using MediatR;
 

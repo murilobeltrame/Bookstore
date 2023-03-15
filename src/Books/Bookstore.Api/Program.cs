@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 using Bookstore.Api;
-using Bookstore.Api.Shared;
-using Bookstore.Api.Shared.Interfaces;
 using Bookstore.Api.Shared.Midlewares;
+using Bookstore.CQRS;
+using Bookstore.CQRS.Interfaces;
 using FluentValidation;
 using MassTransit;
 using MediatR;
@@ -36,7 +36,8 @@ scope.ServiceProvider.GetRequiredService<DbInitializer>().Run();
 
 // Configure the HTTP request pipeline.
 app.UseSwagger();
-app.UseSwaggerUI(o => {
+app.UseSwaggerUI(o =>
+{
     o.RoutePrefix = string.Empty;
     o.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
 });
