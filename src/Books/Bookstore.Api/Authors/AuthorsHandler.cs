@@ -10,6 +10,7 @@ namespace Bookstore.Api.Authors
         ICommandHandler<UpdateAuthorCommand>,
         ICommandHandler<DeleteAuthorCommand>,
         IQueryHandler<FetchAuthorsQuery, IEnumerable<Author>>,
+        IQueryHandler<FetchAuthorsByNamesQuery, IEnumerable<Author>>,
         IQueryHandler<GetAuthorQuery, Author>
     {
         private readonly IRepository<Author> _repository;
@@ -17,31 +18,28 @@ namespace Bookstore.Api.Authors
         public AuthorsHandler(IRepository<Author> repository) =>
             _repository = repository;
 
-        public async Task<Author> Handle(CreateAuthorCommand request, CancellationToken cancellationToken)
-        {
-            return await _repository.Create(request.ToEntity(), cancellationToken);
-        }
+        public Task<Author> Handle(CreateAuthorCommand request, CancellationToken cancellationToken) =>
+            _repository.Create(request.ToEntity(), cancellationToken);
 
         public async Task<Unit> Handle(UpdateAuthorCommand request, CancellationToken cancellationToken)
         {
             await _repository.Update(request.Id, request.ToEntity(), cancellationToken);
-            return new();
+            return Unit.Value;
         }
 
         public async Task<Unit> Handle(DeleteAuthorCommand request, CancellationToken cancellationToken)
         {
             await _repository.Delete(request.Id, cancellationToken);
-            return new();
+            return Unit.Value;
         }
 
-        public async Task<IEnumerable<Author>> Handle(FetchAuthorsQuery request, CancellationToken cancellationToken)
-        {
-            return await _repository.Query(request.ToSpecification(), cancellationToken);
-        }
+        public Task<IEnumerable<Author>> Handle(FetchAuthorsQuery request, CancellationToken cancellationToken) =>
+            _repository.Query(request.ToSpecification(), cancellationToken);
 
-        public async Task<Author> Handle(GetAuthorQuery request, CancellationToken cancellationToken)
-        {
-            return await _repository.Get(request.Id, cancellationToken);
-        }
+        public Task<Author> Handle(GetAuthorQuery request, CancellationToken cancellationToken) =>
+            _repository.Get(request.Id, cancellationToken);
+
+        public Task<IEnumerable<Author>> Handle(FetchAuthorsByNamesQuery request, CancellationToken cancellationToken) =>
+            _repository.Query(request.ToSpecification(), cancellationToken);
     }
 }
