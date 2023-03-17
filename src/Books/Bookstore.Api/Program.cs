@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
 // Add services to the container.
-builder.Services.AddDbContext<ApplicationContext>(o => o.UseNpgsql(configuration.GetConnectionString("bookstore-db")));
+builder.Services.AddDbContext<ApplicationContext>(o => o.UseNpgsql(configuration.GetConnectionString("books-db")));
 builder.Services.AddMassTransit(o => o.UsingRabbitMq((context, config) =>
 {
     config.Host(configuration.GetConnectionString("bookstore-broker", "protocol"));

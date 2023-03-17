@@ -8,9 +8,9 @@ namespace Bookstore.CQRS
 {
     public class Repository<T> : IRepository<T> where T : class, Interfaces.IEntity<T>
     {
-        private readonly DbContext _context;
+        private readonly IApplicationContext _context;
 
-        public Repository(DbContext context) => _context = context;
+        public Repository(IApplicationContext context) => _context = context;
 
         public async Task<T> Create(T entity, CancellationToken cancellationToken = default)
         {

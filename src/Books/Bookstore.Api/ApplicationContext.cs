@@ -1,10 +1,11 @@
 ﻿using Bookstore.Api.Authors;
 using Bookstore.Api.Books;
+using Bookstore.CQRS.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bookstore.Api
 {
-    public class ApplicationContext : DbContext
+    public class ApplicationContext : DbContext, IApplicationContext
     {
         public ApplicationContext() { }
 

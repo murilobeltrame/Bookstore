@@ -1,11 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Bookstore.CQRS.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Publisher.Api
 {
-    public class ApplicationContext:DbContext
-	{
-		public ApplicationContext(DbContextOptions<ApplicationContext> options) :
-			base(options) { }
+    public class ApplicationContext : DbContext, IApplicationContext
+    {
+        public ApplicationContext(DbContextOptions<ApplicationContext> options) :
+            base(options)
+        { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -21,4 +23,3 @@ namespace Publisher.Api
         public DbSet<Publisher> Publishers { get; set; }
     }
 }
-
