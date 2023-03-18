@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookstore.CQRS", "Shared\Bo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookstore.Common", "Shared\Bookstore.Common\Bookstore.Common.csproj", "{EDFB031E-F16F-4D57-A293-0372AFB7B5A5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GraphQl", "GraphQl", "{B6C3C138-E9FB-48EE-9DB6-F9DCC4BFDD92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookstore.GraphQl", "GraphQl\Bookstore.GraphQl\Bookstore.GraphQl.csproj", "{900C9BAC-E6C8-46D2-BF88-AEF89BF75A46}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,10 @@ Global
 		{EDFB031E-F16F-4D57-A293-0372AFB7B5A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDFB031E-F16F-4D57-A293-0372AFB7B5A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDFB031E-F16F-4D57-A293-0372AFB7B5A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{900C9BAC-E6C8-46D2-BF88-AEF89BF75A46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{900C9BAC-E6C8-46D2-BF88-AEF89BF75A46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{900C9BAC-E6C8-46D2-BF88-AEF89BF75A46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{900C9BAC-E6C8-46D2-BF88-AEF89BF75A46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,5 +87,6 @@ Global
 		{CF2F4A3D-AA02-47F3-B989-FFF0D01C2F16} = {D583509F-B20C-43C5-B44C-6513B9253E96}
 		{642AF4BB-AAEF-4755-B17D-9558D3CD0D7B} = {75306F20-AC19-423B-89FA-8D6E7BD5ABA2}
 		{EDFB031E-F16F-4D57-A293-0372AFB7B5A5} = {75306F20-AC19-423B-89FA-8D6E7BD5ABA2}
+		{900C9BAC-E6C8-46D2-BF88-AEF89BF75A46} = {B6C3C138-E9FB-48EE-9DB6-F9DCC4BFDD92}
 	EndGlobalSection
 EndGlobal
