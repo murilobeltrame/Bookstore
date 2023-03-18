@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
 // Add services to the container.
-builder.Services.AddDbContext<ApplicationContext>(o => o.UseNpgsql(configuration.GetConnectionString("publishers-db")));
+builder.Services.AddDbContext<IApplicationContext, ApplicationContext>(o => o.UseNpgsql(configuration.GetConnectionString("publishers-db")));
 builder.Services.AddMassTransit(o => o.UsingRabbitMq((context, config) =>
 {
     config.Host(configuration.GetConnectionString("bookstore-broker", "protocol"));
@@ -27,20 +27,23 @@ builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBeh
 builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();
+builder.Services.AddTransient<DbInitializer>();
 
 var app = builder.Build();
 
+using var scope = app.Services.CreateScope();
+scope.ServiceProvider.GetRequiredService<DbInitializer>().Run();
+
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(o =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
+    o.RoutePrefix = string.Empty;
+    o.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+});
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.Run();

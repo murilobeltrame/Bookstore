@@ -1,5 +1,4 @@
-﻿using System;
-using Bookstore.Api.Authors;
+﻿using Bookstore.Api.Authors;
 using Bookstore.Api.Books;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,10 +8,7 @@ namespace Bookstore.Api
     {
         private readonly ApplicationContext _context;
 
-        public DbInitializer(ApplicationContext context)
-        {
-            _context = context;
-        }
+        public DbInitializer(ApplicationContext context) => _context = context;
 
         public void Run()
         {

@@ -8,11 +8,11 @@ namespace Publisher.Api
 
         public string Name { get; private set; }
 
-        public int Id => throw new NotImplementedException();
+        public int Id { get; private set; }
 
         public Publisher Update(Publisher publisher)
         {
-            this.Name = publisher.Name;
+            Name = publisher.Name;
             return this;
         }
     }
