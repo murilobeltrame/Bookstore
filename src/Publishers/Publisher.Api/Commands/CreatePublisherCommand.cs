@@ -2,8 +2,11 @@
 
 namespace Publisher.Api.Commands
 {
-    public sealed record CreatePublisherCommand(string Name) : ICommand<Publisher>
+    public sealed record CreatePublisherCommand(
+        string Name,
+        string OriginCountry,
+        string HeadQuartersLocation) : ICommand<Publisher>
     {
-        internal Publisher ToEntity() => new(Name);
+        internal Publisher ToEntity() => new(Name, OriginCountry, HeadQuartersLocation);
     }
 }

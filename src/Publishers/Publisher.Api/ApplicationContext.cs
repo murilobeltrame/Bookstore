@@ -16,6 +16,12 @@ namespace Publisher.Api
             publisherModel.Property(x => x.Name)
                 .HasMaxLength(100)
                 .IsRequired();
+            publisherModel.Property(x => x.OriginCountry)
+                .HasMaxLength(50)
+                .IsRequired();
+            publisherModel.Property(x => x.HeadquartersLocation)
+                .HasMaxLength(100)
+                .IsRequired();
 
             base.OnModelCreating(modelBuilder);
         }

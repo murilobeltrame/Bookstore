@@ -14,10 +14,10 @@ namespace Publisher.Api
 
             if (!_context.Publishers.Any())
             {
-                var addison = new Publisher("Addison-Wesley Professional");
-                var oreilly = new Publisher("O'Reilly Media");
+                var addison = new Publisher("Addison-Wesley Professional", "United States", "Boston");
+                var oreilly = new Publisher("O'Reilly Media", "United States", "Sebastopol, California");
                 _context.AddRange(new[] { addison, oreilly });
-                _context.SaveChanges();
+                _context.SaveChanges(); 
             }
         }
 	}
