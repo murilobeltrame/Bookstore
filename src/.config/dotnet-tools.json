@@ -25,6 +25,12 @@
       "commands": [
         "dotnet-stryker"
       ]
+    },
+    "nswag.consolecore": {
+      "version": "13.18.2",
+      "commands": [
+        "nswag"
+      ]
     }
   }
 }

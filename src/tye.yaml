@@ -47,3 +47,5 @@ services:
     - port: 54321
       containerPort: 5432
       connectionString: Server=${host};Port=${port};Database=${env:POSTGRES_DB};User Id=${env:POSTGRES_USER};Password=${env:POSTGRES_PASSWORD};
+- name: bookstore-graphql
+  project: GraphQl/Bookstore.GraphQl/Bookstore.GraphQl.csproj

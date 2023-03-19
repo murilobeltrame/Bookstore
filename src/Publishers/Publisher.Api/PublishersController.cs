@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using System.Net;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Publisher.Api.Commands;
 using Publisher.Api.Queries;
@@ -10,6 +11,7 @@ namespace Publisher.Api
 	public class PublishersController : ControllerBase
 	{
 		[HttpGet]
+		[ProducesResponseType(typeof(IEnumerable<Publisher>), (int)HttpStatusCode.OK)]
 		public async Task<IActionResult> Fetch(
 			[FromServices] IMediator mediator,
 			[FromQuery] FetchPublishersByFilterQuery request)
@@ -18,7 +20,8 @@ namespace Publisher.Api
 		}
 
 		[HttpGet("{id}")]
-		public async Task<IActionResult> Get(
+        [ProducesResponseType(typeof(Publisher), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> Get(
 			[FromServices] IMediator mediator,
 			int id)
 		{
@@ -26,7 +29,8 @@ namespace Publisher.Api
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Create(
+        [ProducesResponseType(typeof(Publisher), (int)HttpStatusCode.Created)]
+        public async Task<IActionResult> Create(
 			[FromServices] IMediator mediator,
 			[FromBody] CreatePublisherCommand request)
 		{
@@ -35,7 +39,8 @@ namespace Publisher.Api
 		}
 
 		[HttpPut("{id}")]
-		public async Task<IActionResult> Update(
+        [ProducesResponseType((int)HttpStatusCode.NoContent)]
+        public async Task<IActionResult> Update(
 			[FromServices] IMediator mediator,
 			[FromBody] UpdatePublisherCommand request,
 			int id)
@@ -46,6 +51,7 @@ namespace Publisher.Api
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType((int)HttpStatusCode.NoContent)]
         public async Task<IActionResult> Delete(
             [FromServices] IMediator mediator,
             int id)

@@ -1,4 +1,5 @@
-﻿using Bookstore.Api.Books.Commands;
+﻿using System.Net;
+using Bookstore.Api.Books.Commands;
 using Bookstore.Api.Books.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,7 @@ namespace Bookstore.Api.Books
 	public class BooksController: ControllerBase
 	{
 		[HttpGet]
+		[ProducesResponseType(typeof(IEnumerable<FetchBookQueryResponse>), (int)HttpStatusCode.OK)]
 		public async Task<IActionResult> Fetch(
 			[FromServices] IMediator mediator,
 			[FromQuery] FetchBookQuery request)
@@ -18,6 +20,7 @@ namespace Bookstore.Api.Books
 		}
 
 		[HttpGet("{id}")]
+		[ProducesResponseType(typeof(GetBookQueryResponse), (int)HttpStatusCode.OK)]
 		public async Task<IActionResult> Get(
 			[FromServices] IMediator mediator,
 			int id)
@@ -26,6 +29,7 @@ namespace Bookstore.Api.Books
 		}
 
         [HttpPost]
+		[ProducesResponseType(typeof(CreateBookCommandResponse), (int)HttpStatusCode.Created)]
         public async Task<IActionResult> Create(
             [FromServices] IMediator mediator,
             [FromBody] CreateBookCommand request)
@@ -35,6 +39,7 @@ namespace Bookstore.Api.Books
         }
 
 		[HttpPut("{id}")]
+		[ProducesResponseType((int)HttpStatusCode.NoContent)]
 		public async Task<IActionResult> Update(
 			[FromServices] IMediator mediator,
 			[FromBody] UpdateBookCommand request,
@@ -46,7 +51,8 @@ namespace Bookstore.Api.Books
 		}
 
 		[HttpDelete("{id}")]
-		public async Task<IActionResult> Delete(
+        [ProducesResponseType((int)HttpStatusCode.NoContent)]
+        public async Task<IActionResult> Delete(
 			[FromServices] IMediator mediator,
 			int id)
 		{
