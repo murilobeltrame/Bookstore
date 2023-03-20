@@ -415,3 +415,7 @@ coveragereport
 
 # Styker output
 StrykerOutput
+
+# Swagger
+
+**/*.swagger.json

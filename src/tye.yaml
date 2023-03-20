@@ -8,6 +8,8 @@ name: bookstore
 services:
 - name: books-api
   project: Books/Bookstore.Api/Bookstore.Api.csproj
+  bindings:
+    - connectionString: https://${host}:${port}
 - name: books-db
   image: postgres:11.19-alpine
   env:
