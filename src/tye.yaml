@@ -10,6 +10,7 @@ services:
   project: Books/Bookstore.Api/Bookstore.Api.csproj
   bindings:
     - connectionString: https://${host}:${port}
+      protocol: https
 - name: books-db
   image: postgres:11.19-alpine
   env:
@@ -36,6 +37,9 @@ services:
       connectionString: ${host}
 - name: publishers-api
   project: Publishers/Publisher.Api/Publisher.Api.csproj
+  bindings:
+    - connectionString: https://${host}:${port}
+      protocol: https
 - name: publishers-db
   image: postgres:11.19-alpine
   env:
