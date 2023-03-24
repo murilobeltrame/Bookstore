@@ -31,7 +31,9 @@ namespace Bookstore.Api.Books
 
         public async Task<CreateBookCommandResponse> Handle(CreateBookCommand request, CancellationToken cancellationToken)
         {
-            var existingAuthors = await _mediator.Send(new FetchAuthorsByNamesQuery(request.Authors.Select(s => s.Name)));
+            var existingAuthors = await _mediator.Send(
+                new FetchAuthorsByNamesQuery(request.Authors.Select(s => s.Name)),
+                cancellationToken);
             var createdBook = await _repository.Create(request.ToEntity(existingAuthors), cancellationToken);
             await _publisher.Publish(CreatedBookEvent.FromEntity(createdBook), cancellationToken);
             return CreateBookCommandResponse.FromEntity(createdBook);
